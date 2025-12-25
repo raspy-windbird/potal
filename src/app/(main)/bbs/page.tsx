@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase";
+import Link from "next/link";
 
 export default async function BBSPage() {
     // スレッド一覧を最新投稿順で取得
@@ -14,7 +15,7 @@ export default async function BBSPage() {
             </h1>
 
             <div style={{ margin: '15px 0' }}>
-                <a href="/bbs/create" style={{
+                <Link href="/bbs/create" style={{
                     display: 'inline-block',
                     padding: '5px 10px',
                     backgroundColor: '#ddd',
@@ -24,7 +25,7 @@ export default async function BBSPage() {
                     fontSize: 'small'
                 }}>
                     [ 新規スレッド作成 ]
-                </a>
+                </Link>
             </div>
 
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'small', marginTop: '10px' }}>
@@ -40,9 +41,9 @@ export default async function BBSPage() {
                         threads.map((thread) => (
                             <tr key={thread.id}>
                                 <td style={{ border: '1px solid #ccc', padding: '5px' }}>
-                                    <a href={`/bbs/${thread.id}`} style={{ fontWeight: 'bold' }}>
+                                    <Link href={`/bbs/${thread.id}`} style={{ fontWeight: 'bold' }}>
                                         {thread.title}
-                                    </a>
+                                    </Link>
                                     {thread.is_archived && (
                                         <span style={{ color: 'red', marginLeft: '5px', fontSize: '10px' }}>[終了]</span>
                                     )}
@@ -66,7 +67,7 @@ export default async function BBSPage() {
             </table>
 
             <div style={{ marginTop: '20px' }}>
-                <a href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</a>
+                <Link href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</Link>
             </div>
         </div>
     );

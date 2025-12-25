@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import LogoutButton from './LogoutButton'; // ログアウト処理を分離している場合
+import Link from 'next/link';
 
 export default async function MainLayout({ children }: { children: React.ReactNode }) {
     // 1. Cookieから開発用ユーザーIDを取得
@@ -12,11 +13,11 @@ export default async function MainLayout({ children }: { children: React.ReactNo
                 <span style={{ fontSize: 'medium' }}><b>メニュー</b></span>
                 <hr />
                 <ul className="menu-list">
-                    <li><a href="/">トップページ</a></li>
-                    <li><a href="/bbs">掲示板</a></li>
-                    <li><a href="/wiki">まとめ百科</a></li>
+                    <li><Link href="/">トップページ</Link></li>
+                    <li><Link href="/bbs">掲示板</Link></li>
+                    <li><Link href="/wiki">まとめ百科</Link></li>
                     {/* Cookieから取得したIDでリンクを生成 */}
-                    <li><a href={`/profile/${myProfileId}`}>個人ページ</a></li>
+                    <li><Link href={`/profile/${myProfileId}`}>個人ページ</Link></li>
                 </ul>
                 <hr />
 

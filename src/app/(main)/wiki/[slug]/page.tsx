@@ -1,6 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabase";
 import { decrypt } from "@/utils/crypto";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export default async function WikiDetailPage(props: { params: Promise<{ slug: string }> }) {
     const params = await props.params;
@@ -44,7 +45,7 @@ export default async function WikiDetailPage(props: { params: Promise<{ slug: st
             <hr style={{ marginTop: '30px', border: '0', borderTop: '1px dashed #ccc' }} />
 
             <div style={{ marginTop: '20px' }}>
-                <a href="/wiki" style={{ fontSize: 'small' }}>■Wiki一覧に戻る</a>
+                <Link href="/wiki" style={{ fontSize: 'small' }}>■Wiki一覧に戻る</Link>
             </div>
         </div>
     );

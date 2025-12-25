@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase";
+import Link from "next/link";
 
 export default async function WikiListPage() {
     // Wiki記事一覧を更新順に取得
@@ -14,7 +15,7 @@ export default async function WikiListPage() {
             </h1>
 
             <div style={{ margin: '15px 0' }}>
-                <a href="/wiki/create" style={{
+                <Link href="/wiki/create" style={{
                     fontSize: 'small',
                     padding: '2px 5px',
                     backgroundColor: '#eee',
@@ -23,16 +24,16 @@ export default async function WikiListPage() {
                     color: '#000'
                 }}>
                     [ 新規記事作成 ]
-                </a>
+                </Link>
             </div>
 
             <ul className="menu-list" style={{ marginTop: '20px' }}>
                 {pages && pages.length > 0 ? (
                     pages.map((page) => (
                         <li key={page.slug} style={{ marginBottom: '8px' }}>
-                            <a href={`/wiki/${page.slug}`} style={{ fontWeight: 'bold', fontSize: '1rem' }}>
+                            <Link href={`/wiki/${page.slug}`} style={{ fontWeight: 'bold', fontSize: '1rem' }}>
                                 {page.title}
-                            </a>
+                            </Link>
                             <span style={{ fontSize: '0.7rem', color: '#666', marginLeft: '10px' }}>
                                 (更新: {new Date(page.updated_at).toLocaleDateString('ja-JP')})
                             </span>
@@ -44,7 +45,7 @@ export default async function WikiListPage() {
             </ul>
 
             <div style={{ marginTop: '40px' }}>
-                <a href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</a>
+                <Link href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</Link>
             </div>
         </div>
     );

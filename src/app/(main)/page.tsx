@@ -2,6 +2,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import UserStatus from "./UserStatus";
 import StatusForm from "./StatusForm";
 import AccessCounter from "./AccessCounter"; // インポート忘れに注意
+import Link from "next/link";
 
 export default async function Home() {
   // 1. スレッド一覧の取得
@@ -40,9 +41,9 @@ export default async function Home() {
             threads.map((thread) => (
               <tr key={thread.id}>
                 <td style={{ border: '1px solid #ccc', padding: '5px' }}>
-                  <a href={`/bbs/${thread.id}`} style={{ fontWeight: 'bold' }}>
+                  <Link href={`/bbs/${thread.id}`} style={{ fontWeight: 'bold' }}>
                     {thread.title}
-                  </a>
+                  </Link>
                   {thread.is_archived && (
                     <span style={{ color: '#ff0000', marginLeft: '5px' }}>[終了]</span>
                   )}
@@ -78,9 +79,9 @@ export default async function Home() {
       )}
 
       <div style={{ marginTop: '20px', textAlign: 'right' }}>
-        <a href="/bbs/create" style={{ display: 'inline-block', padding: '5px 15px', backgroundColor: '#ddd', border: '2px outset #fff', textDecoration: 'none', color: '#000', fontSize: 'small' }}>
+        <Link href="/bbs/create" style={{ display: 'inline-block', padding: '5px 15px', backgroundColor: '#ddd', border: '2px outset #fff', textDecoration: 'none', color: '#000', fontSize: 'small' }}>
           新しいスレッドを立てる
-        </a>
+        </Link>
       </div>
 
       <StatusForm />

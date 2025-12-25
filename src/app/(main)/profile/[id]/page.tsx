@@ -2,6 +2,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { decrypt } from "@/utils/crypto";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 export default async function ProfilePage(props: { params: Promise<{ id: string }> }) {
     const params = await props.params;
@@ -60,12 +61,12 @@ export default async function ProfilePage(props: { params: Promise<{ id: string 
 
             {currentUserId === id && (
                 <div style={{ marginTop: '20px', textAlign: 'right' }}>
-                    <a href={`/profile/${id}/edit`} style={{ fontSize: 'small' }}>[ 自分のページを編集する ]</a>
+                    <Link href={`/profile/${id}/edit`} style={{ fontSize: 'small' }}>[ 自分のページを編集する ]</Link>
                 </div>
             )}
 
             <div style={{ marginTop: '40px' }}>
-                <a href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</a>
+                <Link href="/" style={{ fontSize: 'small' }}>■トップページへ戻る</Link>
             </div>
         </div>
     );
